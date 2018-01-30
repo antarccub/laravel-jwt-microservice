@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+    app:
+        build:
+            context: ./
+        ports:
+          - 81:80
+        links:
+          - db
+        volumes:
+          - ./:/var/www/html/app
+    db:
+        image: mysql
+        environment:
+          - MYSQL_DATABASE=notifications-db
+          - MYSQL_ROOT_PASSWORD=secret
+          - MYSQL_PASSWORD=secret
