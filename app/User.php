@@ -4,26 +4,24 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Providers\User\Illuminate;
+use Tymon\JWTAuth\Providers\User\UserInterface;
 
-class User extends Authenticatable
+class User implements UserInterface
 {
-    use Notifiable;
+
+    private $id;
 
     /**
-     * The attributes that are mass assignable.
+     * Get the user by the given key, value.
      *
-     * @var array
+     * @param string $key
+     * @param mixed $value
+     * @return User
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function getBy($key, $value)
+    {
+        $this->id = $value;
+        return $this;
+    }
 }

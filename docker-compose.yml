@@ -2,17 +2,29 @@ version: '3'
 services:
 
     app:
-        build:
-            context: ./
+        image: registry.gitlab.com/simolab/notifications-service:latest
+        container_name: SNS
         ports:
-          - 81:80
+          - 8082:80
         links:
           - db
         volumes:
           - ./:/var/www/html/app
+        environment:
+          - APP_URL=http://localhost:8082
+          - APP_ENV=local
+          - DB_HOST=db
+          - DB_PORT=3306
+          - DB_DATABASE=notifications-db
+          - DB_USERNAME=root
+          - DB_PASSWORD=secret
     db:
         image: mysql
+        container_name: SNS-DB
+        ports:
+          - 33062:3306
         environment:
           - MYSQL_DATABASE=notifications-db
           - MYSQL_ROOT_PASSWORD=secret
-          - MYSQL_PASSWORD=secret
+        volumes:
+          - .database:/var/lib/mysql

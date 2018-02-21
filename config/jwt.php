@@ -133,7 +133,7 @@ return [
         |
         */
 
-        'user' => 'Tymon\JWTAuth\Providers\User\EloquentUserAdapter',
+        'user' => 'App\User',
 
         /*
         |--------------------------------------------------------------------------

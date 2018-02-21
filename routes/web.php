@@ -11,6 +11,11 @@
 |
 */
 
+use Illuminate\Http\Request;
+use Lcobucci\JWT\Parser;
+
+
 Route::get('/', function () {
+
     return view('welcome');
 });
