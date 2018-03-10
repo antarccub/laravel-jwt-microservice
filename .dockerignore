@@ -2,4 +2,5 @@ vendor
 .idea
 .gitlab-ci.yml
 docker-compose.yml
+.database
 README.md

@@ -61,7 +61,7 @@ return [
     |
     */
 
-    'algo' => 'HS256',
+    'algo' => 'RS256',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,5 +169,9 @@ return [
         'storage' => 'Tymon\JWTAuth\Providers\Storage\IlluminateCacheAdapter',
 
     ],
+
+    'token-provider' => [
+        'pkey-url' => env('ISSUER_PKEY_URL')
+    ]
 
 ];

@@ -16,12 +16,14 @@ use Lcobucci\JWT\Parser;
 class AuthUser
 {
 
-    use Notifiable;
-
     private $token;
 
-    protected $email;
-    protected $id;
+    public $email;
+    public $id;
+
+    /*
+     * Here you can add your custom claims
+     */
 
     public function __construct()
     {
@@ -37,8 +39,4 @@ class AuthUser
 
     }
 
-    public function routeNotificationForMail()
-    {
-        return $this->email;
-    }
 }
